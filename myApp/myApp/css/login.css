@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+.btn-primary-login-custom:hover {
+	color: white;
+	background-color: #c74c1f;
+}
+
+.btn-primary-login-custom:active {
+	color: white
+}
+
+.btn-primary-login-custom:focus {
+	color: white
+}
+
+.btn-primary-login-custom {
+    color: #fff;
+    background-color: #dd5726;
+    border-color: #dd5726;
+}
