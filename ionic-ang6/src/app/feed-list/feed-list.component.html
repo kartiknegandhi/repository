@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-button (click)="loadData($event)" color="primary">Login</ion-button> -->
+
+  <!-- Custom Refresher Content -->
+<!-- pull to refresh -->
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngFor="let fl of mainFeedLists ">
+    <!-- <ion-img src="/assets/myImg.png"></ion-img> -->
+
+    <ion-card-content>
+      <ion-card-title>
+        {{fl.first_name}} &nbsp; {{fl.last_name}}
+      </ion-card-title>
+
+      <p>{{fl.draft}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="page.current_page < (page.total_rows/page.per_page)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

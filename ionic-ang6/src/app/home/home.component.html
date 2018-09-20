@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<p>
+  This is the homepage
+</p>
+
+
+<!-- Custom Refresher Content -->
+<!-- pull to refresh -->
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+<ion-infinite-scroll>
+  <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
+    <div *ngFor="let fl of feedLists ">
+    <h2 >{{fl.draft}}</h2>
+  </div>
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

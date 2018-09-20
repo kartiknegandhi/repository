@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+      </ion-buttons>
+      <ion-title>
+        Mrutyunondh Login
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label position="floating">UserName</ion-label>
+        <ion-input [(ngModel)]="model.username" #username="ngModel"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input [(ngModel)]="model.password" type="password" #password="ngModel"></ion-input>
+        </ion-item>
+        <div text-center>
+<ion-button  (click)="login()" color="primary">Login</ion-button>
+</div>
+<div text-center>
+
+<a  (click)="signUpPage()">Not a member?Sign up here.</a>
+<h1>{{errorMessage}}</h1>
+</div>
+</ion-content>

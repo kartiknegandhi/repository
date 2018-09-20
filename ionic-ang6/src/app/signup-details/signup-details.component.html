@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Signup Details:
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-input required type="text" [(ngModel)]="username" placeholder="Username"></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-input required type="password" [(ngModel)]="password"  placeholder="password"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input required type="password" [(ngModel)]="rePassword" (keyup)="matchPass($event)" placeholder="Re-enter password"></ion-input>
+          </ion-item>
+  <ion-item>
+    <ion-label>Country:</ion-label>
+    <ion-select [(ngModel)]="selectedCountry" [disabled]="passMatch == false" (ionChange)="onCountrySelect($event)" name="cntry" value="in" ok-text="Okay" cancel-text="Dismiss">
+      <ion-select-option  *ngFor="let data of countries">{{data.countryName}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+      <ion-label>City:</ion-label>
+      <ion-select [(ngModel)]="selectedCity" [disabled]="selectedCountry == null"  name="city" value="in" ok-text="Okay" cancel-text="Dismiss">
+        <ion-select-option [value]="data.cityId" *ngFor="let data of cities">{{data.cityName}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Religion:</ion-label>
+        <ion-select [(ngModel)]="selectedReligion" [disabled]="selectedCity == null" (ionChange)="onReligionSelect($event)" name="religion" value="in" ok-text="Okay" cancel-text="Dismiss">
+          <ion-select-option [value]="data.religionName" *ngFor="let data of religions">{{data.religionName}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+          <ion-label>Caste:</ion-label>
+          <ion-select [(ngModel)]="selectedCaste" [disabled]="selectedReligion == null"   (ionChange)="onCasteSelect($event)"   name="caste" value="in" ok-text="Okay" cancel-text="Dismiss">
+            <ion-select-option [value]="data.casteName" *ngFor="let data of castes">{{data.casteName}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Subcaste:</ion-label>
+            <ion-select [(ngModel)]="selectedSubcaste" [disabled]="selectedCaste == null"  name="caste" value="in" ok-text="Okay" cancel-text="Dismiss">
+              <ion-select-option [value]="data.subcasteName" *ngFor="let data of subcastes">{{data.subcasteName}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-button  shape="round" expand="full" (click)="createAccount(username,password,selectedCountry,selectedCity,selectedReligion,selectedCaste,selectedSubcaste)">Create Account</ion-button>
+</ion-content>
